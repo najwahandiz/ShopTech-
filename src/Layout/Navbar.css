@@ -46,3 +46,33 @@
   font-size: 1.1rem;
   transition: color 0.3s ease;
 }
+
+/* Hover effect for navbar items */
+.navbar li:hover, .navbar li a:hover {
+  color: #D4AF35;
+} 
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbarSection {
+    padding: 0 5px;
+
+  }
+  .logo {
+    font-size: 0.90rem;
+    margin-left: 2px;
+  }
+  .navbar ul {
+    margin-right: 2px;
+  }
+  .navbar li {
+    margin: 0 5px;
+    font-size: 0.9rem;
+  }
+  .navbar li a {
+    font-size: 1rem;
+    margin: 0 2px;
+  }
+
+}

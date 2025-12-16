@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <div className='navbarSection'>
         <div className='logo'>
-            <h2>Elegant.</h2>
+            <h2>N. Elegance</h2>
         </div>
         <nav className='navbar'>
             <ul>
