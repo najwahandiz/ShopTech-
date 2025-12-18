@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Home.css'
 import ProductCard from '../Components/ProductCard/ProductCard'
 import productsData from '../data/productsData';
@@ -7,6 +7,11 @@ import productsData from '../data/productsData';
 export default function Home() {
 
     const products = productsData;
+    const bestSellersId=[12,26,33,35];
+    const bestSellers=products.filter(product=>
+        bestSellersId.includes(product.id)
+    );
+    
 
   return (
     <div className="homePage">
@@ -104,17 +109,14 @@ export default function Home() {
         </section>
 
 
-
-
         <section className='bestSellersSection'>
             <h1>Best Sellers</h1>
             <div className='bestSellersCards'>
-                {products.map((product)=>(
+                {bestSellers.map((product)=>(
                         <ProductCard key={product.id} product={product}/>
                 ))}
             </div>
         </section>
-
 
 
         <section className='Commentsection'>

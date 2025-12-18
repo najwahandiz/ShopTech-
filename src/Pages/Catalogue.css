@@ -1,0 +1,59 @@
+.body{
+    margin: 0;
+}
+
+.catalogueContainer{
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    color: white;
+    margin: 0 0;
+    padding-bottom: 0;
+    height: 770vh;
+}
+
+.catalogueContainer h1{
+    padding-top: 100px;
+    font-family: 'playfair';
+    font-size: 55px;
+    padding-bottom: 2px;
+}
+
+.catalogueContainer h3{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #D4AF35;
+;
+}
+
+.catalogueBtnDiv{
+    display: flex;
+    justify-content: center;
+    gap:60px;
+    /* justify-content: space-around; */
+    margin-bottom: 40px;
+}
+
+.catalogueSection{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 50px;
+    margin: 0px 30px;
+}
+
+.catBtn{
+    border: none;
+    margin-top: 20px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    
+    
+}
+
+.catBtn:hover{
+    border: rgb(161, 161, 161) solid 1px;
+    padding: 0px 15px;
+}

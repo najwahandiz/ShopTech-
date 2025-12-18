@@ -1,10 +1,14 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import {addToCart} from "../../Store/Slices/cartSlice"
 import { BsCart } from "react-icons/bs";
 import { FiHeart } from "react-icons/fi";
 import './ProductCard.css'
 
 
 export default function ProductCard({product}) {
+
+    const dispatch = useDispatch();
 
 
   return (
@@ -17,7 +21,7 @@ export default function ProductCard({product}) {
             />
 
             <div className="productActions">
-            <button className="addToCartBtn">
+            <button className="addToCartBtn" onClick={()=>{dispatch(addToCart(product))}}>
                 <BsCart size={22} />
             </button>
             <button className="addToWishlistBtn">
@@ -27,7 +31,16 @@ export default function ProductCard({product}) {
          </div>
 
         <h3 className="productName">{product.name}</h3>
-        <p className="productPrice">{product.price}</p>
+        <div className='shopDiv'>  
+        
+        <button className="addToWishlistBtn">
+                <FiHeart size={23} />
+            </button>
+        <p className="productPrice">{product.price} DH</p>    
+        <button className="addToCartBtn">
+                <BsCart size={23} />
+            </button>  
+        </div>      
     </div>
 
   )
