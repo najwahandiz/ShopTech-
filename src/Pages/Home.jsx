@@ -11,6 +11,18 @@ export default function Home() {
     const bestSellers=products.filter(product=>
         bestSellersId.includes(product.id)
     );
+
+    const [name, setName] = useState("");
+  const [comment, setComment] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (name.trim() && comment.trim()) {
+      setSubmitted(true);
+    }
+  };
     
 
   return (
@@ -119,40 +131,82 @@ export default function Home() {
         </section>
 
 
-        <section className='Commentsection'>
-            <h1>What Our Customers Say</h1>
-            <div className='commentCards'>
-                <div className='commentCard'>
-                    {/* <img src="/Images/user1.jpg" alt="User 1" /> */}
-                    <h3>Anna K.</h3>
-                    <p>"The quality of the fabrics and the attention to detail are unparalleled.
-                    I've never felt more confident in my wardrobe."</p>
-                </div>
-                <div className='commentCard'>
-                    {/* <img src="/Images/user2.jpg" alt="User 2" /> */}
-                    <h3>Michael B.</h3>
-                    <p>"Elegant's pieces are timeless. I invested in a coat last year, and it's still my go-to for every occasion."</p>
-                </div>
-                <div className='commentCard'>
-                    {/* <img src="/Images/user3.jpg" alt="User 3" /> */}
-                    <h3>Sophia L.</h3>
-                    <p>"From the moment I walked into their boutique, I knew I was in for something special.
-                    The customer service is just as exceptional as the clothing."</p>
-                </div>
-            </div>
+        <section className="Commentsection">
+  <h1>What Our Customers Say</h1>
 
+  <div className="commentCards">
+    <div className="commentCard">
+      <span className="quote">“</span>
+      <p>
+        The quality of the fabrics and the attention to detail are unparalleled.
+        I've never felt more confident in my wardrobe.
+      </p>
+      <div className="rating">★★★★★</div>
+      <h3>Anna K.</h3>
+    </div>
+
+    <div className="commentCard">
+      <span className="quote">“</span>
+      <p>
+        Elegant's pieces are timeless. I invested in a coat last year,
+        and it's still my go-to for every occasion.
+      </p>
+      <div className="rating">★★★★★</div>
+      <h3>Michael B.</h3>
+    </div>
+
+    <div className="commentCard">
+      <span className="quote">“</span>
+      <p>
+        From the moment I walked into their boutique, I knew I was in for
+        something special. The customer service is exceptional.
+      </p>
+      <div className="rating">★★★★★</div>
+      <h3>Sophia L.</h3>
+    </div>
+  </div>
+</section>
+
+
+
+
+        <section className="newsletterSection">
+            <h2>Laissez un commentaire</h2>
+            <p>Partagez votre avis ou une suggestion avec nous !</p>
+
+            {submitted ? (
+            <div className="commentThanks">
+                Merci <strong>{name}</strong> pour votre commentaire !
+            </div>
+            ) : (
+            <form className="newsletterForm" onSubmit={handleSubmit}>
+                <input
+                type="text"
+                placeholder="Votre nom"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                required
+                />
+
+                <textarea
+                placeholder="Votre commentaire"
+                value={comment}
+                onChange={e => setComment(e.target.value)}
+                required
+                rows={3}
+                />
+
+                <button type="submit">Envoyer</button>
+            </form>
+            )}
         </section>
 
 
-        <section className='newsletterSection'>
-            <h2>Subscribe to our Newsletter</h2>
-            <p>Stay updated with the latest trends and exclusive offers.</p>
-            <div className='newsletterForm'>
-                <input type="email" placeholder="Enter your email" />
-                <button>Subscribe</button>
-            </div>
 
-        </section>
+    
+       
+    
+
 
         
     </div>

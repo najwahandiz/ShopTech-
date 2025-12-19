@@ -30,6 +30,9 @@ body {
     padding: 0 0;
 }
 
+
+
+
 .grid-item {
     position: relative;
     overflow: hidden;
@@ -456,50 +459,132 @@ body {
 
 
 /*=======================Comments Styles =========================*/
+/* =======================
+   TESTIMONIAL SECTION
+======================= */
+
 .Commentsection {
-    background-color: #f9f9f9;
-    padding: 60px 20px;
-    text-align: center;
+  background: linear-gradient(180deg, #fafafa, #f3f3f3);
+  padding: 80px 20px;
+  text-align: center;
 }
+
+/* Title */
 .Commentsection h1 {
-    font-family: "Playfair Display", serif;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  margin-bottom: 50px;
+  position: relative;
+  color: #111;
 }
+
+.Commentsection h1::after {
+  content: "";
+  width: 60px;
+  height: 2px;
+  background: #d4af37;
+  display: block;
+  margin: 12px auto 0;
+}
+
+/* Cards wrapper */
 .commentCards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
+
+/* Card */
 .commentCard {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 300px;
-    text-align: left;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px 25px;
+  max-width: 320px;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  animation: fadeUp 0.8s ease forwards;
 }
-.commentCard h3 {
-    font-family: "Playfair Display", serif;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+
+/* Hover effect */
+.commentCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
 }
+
+/* Quote icon */
+.quote {
+  font-size: 4rem;
+  color: #d4af37;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  opacity: 0.2;
+}
+
+/* Comment text */
 .commentCard p {
-    font-size: 1rem;
-    color: #555;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 20px;
 }
-.commentCard .rating {
-    color: #D4AF35;
-    font-size: 1.2rem;
-    margin-top: 10px;
+
+/* Rating stars */
+.rating {
+  color: #d4af37;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  animation: sparkle 1.5s ease-in-out infinite alternate;
 }
-/* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-    .commentCards {
-        flex-direction: column;
-        align-items: center;
-    }
+
+/* Name */
+.commentCard h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  margin-top: 5px;
+  color: #111;
+}
+
+/* =======================
+   ANIMATIONS
+======================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sparkle {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+@media (max-width: 768px) {
+  .commentCards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Commentsection h1 {
+    font-size: 2.2rem;
+  }
 }
 
 

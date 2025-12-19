@@ -1,17 +1,60 @@
 
 .sideBarSection {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1002;
+}
+
+.cartSidebar {
     width: 400px;
+    max-width: 90vw;
     padding: 20px;
     padding-top: 70px;
-    background-color: #111; /* fond sombre */
+    background-color: #111;
     color: #fff;
     font-family: 'Arial', sans-serif;
     position: fixed;
-    right: 0;
+    right: -520px;
     top: 0;
     height: 100vh;
-    overflow-y:scroll;
+    overflow-y: auto;
     box-shadow: -4px 0 10px rgba(0,0,0,0.5);
+    transition: right 0.35s cubic-bezier(.4,0,.2,1);
+    z-index: 1003;
+}
+
+.cartSidebar.open {
+    right: 0;
+}
+
+.cartSidebar .closeBtn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1004;
+    transition: color 0.2s;
+}
+.cartSidebar .closeBtn:hover {
+    color: #ff4d4d;
+}
+
+/* Overlay for background when sidebar is open */
+.cartSidebar.open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.3);
+    z-index: 1002;
+    pointer-events: none;
 }
 
 .sectionTitle {
@@ -38,9 +81,9 @@
 }
 
 .imgDiv {
-    width: 110px;
-    height: 120px;
-    /* flex-shrink: 0; */
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
 }
 
 .imgDiv img {
@@ -100,6 +143,7 @@
     margin-bottom: 70px;
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
+    background: #181818;
 }
 
 .totalLabel {
@@ -123,3 +167,4 @@
 .totalDiv:hover .totalPrice {
     transform: scale(1.05);
 }
+

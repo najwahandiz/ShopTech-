@@ -4,7 +4,7 @@ import { increaseQuantity,decreaseQuantity } from '../Store/Slices/cartSlice';
 import './CartSidebar.css'
 
 
-export default function CartSidebar() {
+export default function CartSidebar({ isOpen, closeCart }) {
 
     const cartItems= useSelector((state)=>state.cart.items);
     const dispatch =useDispatch();
@@ -14,8 +14,12 @@ export default function CartSidebar() {
 
 
   return (
+
+
     <div className='sideBarSection'>
+        <aside className={`cartSidebar ${isOpen ? "open" : ""}`}>
         <h2 className='sectionTitle'>Your Bag ({cartItems.length})</h2>
+        <button className="closeBtn" onClick={closeCart}>✖</button>
         {cartItems.length===0 ? (<h3>Your bag is empty</h3>) : (
             <div className='cartItems'>
                 {cartItems.map(product=>(
@@ -41,7 +45,8 @@ export default function CartSidebar() {
             <span className="totalLabel">Total</span>
             <span className="totalPrice">{Total} Dh</span>
         </div>
-
+    </aside>
     </div>
+
   )
 }

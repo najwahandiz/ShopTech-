@@ -1,36 +1,40 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from './Slices/cartSlice'
+import wishlistReducer from './Slices/wishlistSlice'
 
-// Charger le panier depuis le localStorage
-const loadCartFromLocalStorage = () => {
+
+// Charger le panier et la wishlist depuis le localStorage
+const loadStateFromLocalStorage = () => {
     try {
-        const serializedState = localStorage.getItem("cart");
-        if (serializedState === null) {
-            return undefined;
-        }
-        return { cart: JSON.parse(serializedState) };
+        const cart = localStorage.getItem("cart");
+        const wishlist = localStorage.getItem("wishlist");
+        const state = {};
+        if (cart) state.cart = JSON.parse(cart);
+        if (wishlist) state.wishlist = JSON.parse(wishlist);
+        return Object.keys(state).length ? state : undefined;
     } catch (e) {
         return undefined;
     }
 };
 
-// Sauvegarder le panier dans le localStorage
-const saveCartToLocalStorage = (state) => {
+// Sauvegarder le panier et la wishlist dans le localStorage
+const saveStateToLocalStorage = (state) => {
     try {
-        const serializedState = JSON.stringify(state.cart);
-        localStorage.setItem("cart", serializedState);
+        localStorage.setItem("cart", JSON.stringify(state.cart));
+        localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
     } catch (e) {}
 };
 
-const preloadedState = loadCartFromLocalStorage();
+const preloadedState = loadStateFromLocalStorage();
 
 export const store = configureStore({
     reducer: {
         cart: cartReducer,
+        wishlist: wishlistReducer,
     },
     preloadedState,
 });
 
 store.subscribe(() => {
-    saveCartToLocalStorage(store.getState());
+    saveStateToLocalStorage(store.getState());
 });
